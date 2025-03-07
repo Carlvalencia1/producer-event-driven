@@ -8,7 +8,7 @@ import (
     "time"
 
     amqp "github.com/rabbitmq/amqp091-go"
-    "producer/src/orders/domain"
+    "producer/src/reservations/domain"
 )
 
 type MyExchangeLogs struct {
@@ -31,8 +31,8 @@ func NewRabbitRepository(ch *amqp.Channel) *MyExchangeLogs {
     return &MyExchangeLogs{ch: ch}
 }
 
-func (ch *MyExchangeLogs) Save(order *domain.Order) error {
-    body, err := json.Marshal(order)
+func (ch *MyExchangeLogs) Save(reservation *domain.Reservation) error {
+    body, err := json.Marshal(reservation)
     if err != nil {
         return fmt.Errorf("error al serializar el pedido: %v", err)
     }
