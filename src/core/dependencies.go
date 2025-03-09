@@ -29,9 +29,9 @@ func IniciarRutas() {
 	middleware := middlewares.NewCorsMiddleware()	
 	router.Use(middleware)
 
-	router.POST("/order", createReservationController.Execute)
+	router.POST("/reservation", createReservationController.Execute)
 
 	if err := router.Run(":8080"); err != nil {
-		log.Fatalf("Error al iniciar el servidor: %v", err)
+		log.Fatalf("error al iniciar el servidor: %v", err)
 	}
 }
